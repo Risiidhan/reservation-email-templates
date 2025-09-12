@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eMenu Reservations</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 608px;
+            background-color: #323232;
+        }
+
+        .header {
+            background-color: #2F4D4E;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .icon {
+            background-color: #030356;
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            color: #ffffff;
+            display: inline-block;
+        }
+
+        .header h2 {
+            font-size: 28px;
+            color: #ffffff;
+            margin: 16px 0 8px 0;
+        }
+
+        .header p {
+            font-size: 16px;
+            color: #dddddd;
+            margin: 8px 0;
+        }
+
+        .body {
+            padding: 20px;
+            color: #ffffff;
+        }
+
+        .body-info-content {
+            background-color: #453950;
+            color: black;
+            padding: 20px 30px;
+        }
+
+        .body-info-content table {
+            width: 100%;
+            padding: 10px 0px;
+        }
+
+        .body-info-content .information-card {
+            padding: 10px 0px;
+        }
+
+        .body-info-content .information-card .status,
+        .body-info-content .information-card .title {
+            display: inline-block;
+        }
+
+        .body h3 {
+            font-size: 20px;
+            margin: 8px 0;
+        }
+
+        .body p {
+            font-size: 18px;
+            margin: 8px 0;
+        }
+
+        .footer {
+            background-color: #2F4D4E;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        td,
+        tr {
+            border: 1px solid red;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .card-header {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .card-special-notes {
+            background-color: #fff8e5;
+            color: red;
+        }
+
+        .card-dietary {
+            color: green;
+        }
+
+        .card-allergies {
+            color: red;
+        }
+
+        .two-columns {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        .two-columns td {
+            vertical-align: top;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center" style="padding-top:100px;">
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="container">
+                    <tr>
+                        <td class="header">
+                            <div class="icon">Icon</div>
+                            <h2>heading</h2>
+                            <p>description</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="body">
+                            <div class="body-info-content">
+                                <div class="information-card">
+                                    <div class="title">title</div>
+                                    <div class="status">status</div>
+                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td width="10%" align="left" valign="middle">Icon</td>
+                                            <td valign="middle">
+                                                <div>Logo</div>
+                                                <div>Navigation</div>
+                                            </td>
+                                            <td width="10%" align="left" valign="middle">Icon</td>
+                                            <td valign="middle">
+                                                <div>Logo</div>
+                                                <div>Navigation</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="information-card">
+                                    <div class="title">title</div>
+                                    <div class="status">status</div>
+                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td width="10%" align="left" valign="middle">Icon</td>
+                                            <td align="left" valign="middle">
+                                                <div>Logo</div>
+                                                <div>Navigation</div>
+                                            </td>
+                                            <td width="10%" align="left" valign="middle">Icon</td>
+                                            <td align="right" valign="middle">
+                                                <div align="left" valign="middle">Logo</div>
+                                                <div align="left" valign="middle">Navigation</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="guest-notes">
+                                <h3>Special Requirements</h3>
+
+                                <table role="presentation" style="margin-bottom: 8px;" width="100%" border="0">
+                                    <tr style="background-color: red;">
+                                        <td class="card card-special-notes">
+                                            <div class="card-header">Special Notes</div>
+                                            Need More Champagne, for celebration
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <table role="presentation" width="100%" border="0">
+                                    <tr>
+                                        <td class="card card-dietary" width="50%">
+                                            <div class="card-header">Dietary Preferences</div>
+                                            Vegan, Gluten Free
+                                        </td>
+                                        <td width="8px">&nbsp;</td>
+                                        <td class="card card-allergies" width="50%">
+                                            <div class="card-header">Allergies</div>
+                                            Nuts, Spicy, Tomatoes
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="footer">
+                            fefe
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
