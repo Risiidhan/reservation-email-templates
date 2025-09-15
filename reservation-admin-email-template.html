@@ -38,7 +38,7 @@
             display: block;
         }
 
-        .header h2 {
+        .header-heading {
             font-size: 28px;
             color: #ffffff;
             margin: 16px 0 8px 0;
@@ -74,13 +74,32 @@
         }
 
         .body-info-content .information-card .status {
-            color: #1F2937;
             font-weight: 700;
             font-size: 12px;
-            background-color: #FEF3C7;
             border-radius: 25px;
             padding: 2px 8px;
             margin-left: 8px;
+        }
+
+        .status-pending {
+            background-color: #FEF3C7;
+            color: #9A3412;
+        }
+
+        .status-no-show {
+            background-color: white;
+            color: #618290;
+            border: 1px solid #618290;
+        }
+
+        .status-cancelled {
+            background-color: #FFEDED;
+            color: #F41717;
+        }
+
+        .status-confirmed {
+            background-color: #D1FAE5;
+            color: #166534;
         }
 
         .body-info-content .information-card {
@@ -100,11 +119,12 @@
             border: 1px solid #E5E7EB;
             margin-right: 8px;
             border-radius: 7.5px;
+            line-height: 38px;
         }
 
         .body-info-content .information-card .icon-container img {
-            margin: 0 auto;
-            display: block;
+            display: inline-block;
+            vertical-align: middle;
         }
 
         .body-info-content .information-card .details {
@@ -113,12 +133,13 @@
 
         .body-info-content .information-card .details p {
             margin: 0;
-            font-size: 12.5px;
+            font-size: 13px;
             color: #1F2937;
+            padding-bottom: 2px;
         }
 
         .body-info-content .information-card .details .details-value {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
             color: #4B5563;
         }
@@ -254,10 +275,33 @@
                 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="container">
                     <tr>
                         <td class="header">
-                            <img src="assets/new-reservation.png" width="72" height="72" style="display:block;"
-                                alt="Icon">
-                            <h2>New Reservation Received!</h2>
+                            alt="Icon">
+                            {% if status == 'pending' %}
+                            <img src="assets/new-reservations.png" width="72" height="72" style="display:block;" />
+                            <h2 class="header-heading">New Reservation Received!</h2>
                             <p>A new booking has been made. Please review the details below.</p>
+
+                            {% elif status == 'confirmed' %}
+                            <img src="assets/reservation-confirmed.png" width="72" height="72" style="display:block;" />
+                            <h2 class="header-heading">Booking Confirmed</h2>
+                            <p>The Guest {{ guest_name }} have successfully Confirmed the reservation.</p>
+
+                            {% elif status == 'cancelled' %}
+                            <img src="assets/reservation-cancelled.png" width="72" height="72" style="display:block;" />
+                            <h2 class="header-heading">Reservation Cancelled</h2>
+                            <p>You have successfully cancelled the reservation for {{ guest_name }}</p>
+
+                            {% elif status == 'no_show' %}
+                            <img src="assets/reservation-no-show.png" width="72" height="72" style="display:block;" />
+                            <h2 class="header-heading">Guest No Show!</h2>
+                            <p>Unfortunately, the guest Mike Toler did not arrive for the scheduled booking with the
+                                following info.</p>
+
+                            {% else %}
+                            <img src="assets/new-reservations.png" width="72" height="72" style="display:block;" />
+                            <h2 class="header-heading">New Reservation Received!</h2>
+                            <p>A reservation has been received. Please check your dashboard for details.</p>
+                            {% endif %}
                         </td>
                     </tr>
 
@@ -266,22 +310,30 @@
                             <div class="body-info-content">
                                 <div class="information-card">
                                     <div class="title">Guest Information</div>
-                                    <div class="status">Pending</div>
+                                    <!-- .status-confirmed .status-cancelled .status-no-show  .status-pending -->
+                                    <div
+                                        class="status{% if status == 'pending' %} status-pending{% elif status == 'success' %} status-confirmed{% elif status == 'cancelled' %} status-cancelled{% elif status == 'no_show' %} status-no-show{% endif %}">
+                                        &bull; {{ status }}
+                                    </div>
                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td width="10%" align="left" valign="middle" class="icon-container">
-                                                <img class="social-icon" src="assets/clock-icon.png" alt="logo" />
+                                            <td align="center" valign="middle">
+                                                <div class="icon-container">
+                                                    <img src="assets/user.png" alt="icon" />
+                                                </div>
                                             </td>
                                             <td width="41%" class="details" valign="middle">
                                                 <p>Customer</p>
-                                                <p class="details-value">Navigation</p>
+                                                <p class="details-value">{{ guest_name }}</p>
                                             </td>
-                                            <td width="10%" align="left" valign="middle" class="icon-container">
-                                                <img class="social-icon" src="assets/user-grp-icon.png" alt="logo" />
+                                            <td align="center" valign="middle">
+                                                <div class="icon-container">
+                                                    <img src="assets/contact.png" alt="icon" />
+                                                </div>
                                             </td>
                                             <td width="41%" class="details" valign="middle">
                                                 <p>Contact</p>
-                                                <p class="details-value">4 guests</p>
+                                                <p class="details-value">{{ guest_phone }}</p>
                                             </td>
                                         </tr>
                                     </table>
@@ -289,21 +341,30 @@
 
                                 <div class="information-card">
                                     <div class="title">Booking Details</div>
-                                    <table role="presentation" border="0" cellpadding="" cellspacing="0">
+                                    <table role="presentation" border="0" cellpadding="" cellspacing="0"
+                                        style="margin-bottom: 12px;">
                                         <tr>
-                                            <td width="10%" align="left" valign="middle" class="icon-container">
-                                                <img class="social-icon" src="assets/clock-icon.png" alt="logo" />
+                                            <td align="center" valign="middle">
+                                                <div class="icon-container">
+                                                    <img src="assets/clock-icon.png" alt="icon" />
+                                                </div>
                                             </td>
                                             <td width="41%" align="left" class="details" valign="middle">
                                                 <p class="details-title">Date & Time</p>
-                                                <p class="details-value">VIP</p>
+                                                <p class="details-value">{{ reservation_date }}</p>
+                                                <p class="details-value">{{ reservation_start_time }} - {{
+                                                    reservation_end_time }}</p>
+
                                             </td>
-                                            <td width="10%" align="left" valign="middle" class="icon-container">
-                                                <img class="social-icon" src="assets/source-icon.png" alt="logo" />
+                                            <td align="center" valign="middle">
+                                                <div class="icon-container">
+                                                    <img src="assets/user-grp-icon.png" alt="icon" />
+                                                </div>
                                             </td>
                                             <td width="41%" align="right" class="details" valign="middle">
                                                 <p align="left" class="details-title">Party Size</p>
-                                                <div align="left" class="details-value">Walk in</div>
+                                                <div align="left" class="details-value">{{ number_of_guests }} guest(s)
+                                                </div>
                                             </td>
                                         </tr>
 
@@ -311,19 +372,23 @@
 
                                     <table role="presentation" border="0" cellpadding="" cellspacing="0">
                                         <tr>
-                                            <td width="10%" align="left" valign="middle" class="icon-container">
-                                                <img class="social-icon" src="assets/clock-icon.png" alt="logo" />
+                                            <td align="center" valign="middle">
+                                                <div class="icon-container">
+                                                    <img src="assets/tag-icon.png" alt="icon" />
+                                                </div>
                                             </td>
                                             <td width="41%" align="left" class="details" valign="middle">
                                                 <p class="details-title">Guest Type</p>
-                                                <p class="details-value">VIP</p>
+                                                <p class="details-value">{{ guest_type }}</p>
                                             </td>
-                                            <td width="10%" align="left" valign="middle" class="icon-container">
-                                                <img class="social-icon" src="assets/source-icon.png" alt="logo" />
+                                            <td align="center" valign="middle">
+                                                <div class="icon-container">
+                                                    <img src="assets/source-icon.png" alt="icon" />
+                                                </div>
                                             </td>
                                             <td width="41%" align="right" class="details" valign="middle">
                                                 <p align="left" class="details-title">Source</p>
-                                                <div align="left" class="details-value">Walk in</div>
+                                                <div align="left" class="details-value">{{ source_type }}</div>
                                             </td>
                                         </tr>
                                     </table>
@@ -338,11 +403,16 @@
                                         <td class="card card-special-notes">
                                             <div class="card-header">
                                                 <div class="exclaimation-icon-container">
-                                                    <img width="50%" src="assets/exclaimation-icon.png" alt="exclaimation-icon" />
+                                                    <img width="50%" src="assets/exclaimation-icon.png"
+                                                        alt="exclaimation-icon" />
                                                 </div>
                                                 Special Notes
                                             </div>
-                                            Need More Champagne, for celebration
+                                            {% if notes %}
+                                            {{ notes }}
+                                            {% else %}
+                                            N/A
+                                            {% endif %}
                                         </td>
                                     </tr>
                                 </table>
@@ -351,12 +421,22 @@
                                     <tr>
                                         <td class="card card-dietary">
                                             <div class="card-header">Dietary Preferences</div>
-                                            Vegan, Gluten Free
+                                            {% if dietary_preferences %}
+                                            {{ dietary_preferences }}
+                                            {% else %}
+                                            N/A
+                                            {% endif %}
+
                                         </td>
                                         <td width="18px">&nbsp;</td>
                                         <td class="card card-allergies">
                                             <div class="card-header">Allergies</div>
-                                            Nuts, Spicy, Tomatoes
+                                            {% if allergies %}
+                                            {{ allergies }}
+                                            {% else %}
+                                            N/A
+                                            {% endif %}
+
                                         </td>
                                     </tr>
                                 </table>
