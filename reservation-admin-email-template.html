@@ -9,28 +9,33 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #000000;
+            background-color: white;
             font-family: Arial, sans-serif;
         }
 
         .container {
             width: 608px;
-            background-color: #323232;
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0px 12px 27px 0px #BCBCD21A,
+                0px 49px 49px 0px #BCBCD217,
+                0px 110px 66px 0px #BCBCD20D,
+                0px 195px 78px 0px #BCBCD203,
+                0px 304px 85px 0px #BCBCD200;
+
         }
 
         .header {
-            background-color: #2F4D4E;
+            background: linear-gradient(157.74deg, rgba(234, 193, 198, 0.69) 3.65%, rgba(87, 68, 230, 0.69) 90.44%);
             padding: 40px 0;
             text-align: center;
         }
 
-        .icon {
-            background-color: #030356;
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            color: #ffffff;
-            display: inline-block;
+        .header img {
+            margin: 0 auto;
+            display: block;
         }
 
         .header h2 {
@@ -51,14 +56,31 @@
         }
 
         .body-info-content {
-            background-color: #453950;
+            background-color: #FCF9FF;
             color: black;
             padding: 20px 30px;
+            margin: 20px 0 40px 0;
         }
 
         .body-info-content table {
             width: 100%;
             padding: 10px 0px;
+        }
+
+        .body-info-content .information-card .title {
+            color: #1F2937;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .body-info-content .information-card .status {
+            color: #1F2937;
+            font-weight: 700;
+            font-size: 12px;
+            background-color: #FEF3C7;
+            border-radius: 25px;
+            padding: 2px 8px;
+            margin-left: 8px;
         }
 
         .body-info-content .information-card {
@@ -68,6 +90,44 @@
         .body-info-content .information-card .status,
         .body-info-content .information-card .title {
             display: inline-block;
+        }
+
+        .body-info-content .information-card .icon-container {
+            background-color: white;
+            aspect-ratio: 1/1;
+            width: 38px;
+            height: 38px;
+            border: 1px solid #E5E7EB;
+            margin-right: 8px;
+            border-radius: 7.5px;
+        }
+
+        .body-info-content .information-card .icon-container img {
+            margin: 0 auto;
+            display: block;
+        }
+
+        .body-info-content .information-card .details {
+            padding-left: 16px;
+        }
+
+        .body-info-content .information-card .details p {
+            margin: 0;
+            font-size: 12.5px;
+            color: #1F2937;
+        }
+
+        .body-info-content .information-card .details .details-value {
+            font-size: 13px;
+            font-weight: 700;
+            color: #4B5563;
+        }
+
+        .guest-notes .guest-notes-title {
+            font-weight: 700;
+            font-size: 21px;
+            padding: 14px 0;
+            color: #000000;
         }
 
         .body h3 {
@@ -88,10 +148,7 @@
             color: #ffffff;
         }
 
-        td,
-        tr {
-            border: 1px solid red;
-        }
+
 
         .section-title {
             font-size: 18px;
@@ -102,10 +159,17 @@
         .card {
             background-color: #fff;
             border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 10px 15px;
+            border-radius: 15px;
+            padding: 24px;
             margin-bottom: 10px;
             font-size: 14px;
+            color: #4B5563;
+            box-shadow: 0px 6px 13px 0px #B9B9D51A,
+                0px 23px 23px 0px #B9B9D517,
+                0px 51px 31px 0px #B9B9D50D,
+                0px 91px 37px 0px #B9B9D503,
+                0px 143px 40px 0px #B9B9D500;
+
         }
 
         .card-header {
@@ -113,17 +177,34 @@
             margin-bottom: 5px;
         }
 
-        .card-special-notes {
-            background-color: #fff8e5;
-            color: red;
+        .card-header .exclaimation-icon-container {
+            width: 30px;
+            height: 30px;
+            background-color: #FEF9C3;
+            border-radius: 7.25px;
+            border: none;
+            display: inline-block;
+            text-align: center;
+            line-height: 25px;
+            margin-right: 6px;
         }
 
-        .card-dietary {
-            color: green;
+        .card-header .exclaimation-icon-container img {
+            display: inline-block;
+            vertical-align: middle;
         }
 
-        .card-allergies {
-            color: red;
+
+        .card-special-notes .card-header {
+            color: #A16207;
+        }
+
+        .card-dietary .card-header {
+            color: #16A34A;
+        }
+
+        .card-allergies .card-header {
+            color: #DC2626;
         }
 
         .two-columns {
@@ -135,6 +216,34 @@
             vertical-align: top;
             padding: 5px;
         }
+
+        .action-section {
+            width: 100%;
+            padding: 30px 0px;
+        }
+
+        .action-section button {
+            display: block;
+            margin: 12px auto;
+            padding: 12px 24px;
+            border-radius: 16px;
+            border: none;
+            cursor: pointer;
+            background-image: linear-gradient(to right, #531CDF, #6161FF);
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .footer .social-icon {
+            margin-right: 8px;
+            margin-top: 18px;
+        }
+
+        .footer {
+            background-color: #000000;
+            padding: 48px 0;
+        }
     </style>
 </head>
 
@@ -145,9 +254,10 @@
                 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="container">
                     <tr>
                         <td class="header">
-                            <div class="icon">Icon</div>
-                            <h2>heading</h2>
-                            <p>description</p>
+                            <img src="assets/new-reservation.png" width="72" height="72" style="display:block;"
+                                alt="Icon">
+                            <h2>New Reservation Received!</h2>
+                            <p>A new booking has been made. Please review the details below.</p>
                         </td>
                     </tr>
 
@@ -155,38 +265,65 @@
                         <td class="body">
                             <div class="body-info-content">
                                 <div class="information-card">
-                                    <div class="title">title</div>
-                                    <div class="status">status</div>
+                                    <div class="title">Guest Information</div>
+                                    <div class="status">Pending</div>
                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td width="10%" align="left" valign="middle">Icon</td>
-                                            <td valign="middle">
-                                                <div>Logo</div>
-                                                <div>Navigation</div>
+                                            <td width="10%" align="left" valign="middle" class="icon-container">
+                                                <img class="social-icon" src="assets/clock-icon.png" alt="logo" />
                                             </td>
-                                            <td width="10%" align="left" valign="middle">Icon</td>
-                                            <td valign="middle">
-                                                <div>Logo</div>
-                                                <div>Navigation</div>
+                                            <td width="41%" class="details" valign="middle">
+                                                <p>Customer</p>
+                                                <p class="details-value">Navigation</p>
+                                            </td>
+                                            <td width="10%" align="left" valign="middle" class="icon-container">
+                                                <img class="social-icon" src="assets/user-grp-icon.png" alt="logo" />
+                                            </td>
+                                            <td width="41%" class="details" valign="middle">
+                                                <p>Contact</p>
+                                                <p class="details-value">4 guests</p>
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
 
                                 <div class="information-card">
-                                    <div class="title">title</div>
-                                    <div class="status">status</div>
-                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                    <div class="title">Booking Details</div>
+                                    <table role="presentation" border="0" cellpadding="" cellspacing="0">
                                         <tr>
-                                            <td width="10%" align="left" valign="middle">Icon</td>
-                                            <td align="left" valign="middle">
-                                                <div>Logo</div>
-                                                <div>Navigation</div>
+                                            <td width="10%" align="left" valign="middle" class="icon-container">
+                                                <img class="social-icon" src="assets/clock-icon.png" alt="logo" />
                                             </td>
-                                            <td width="10%" align="left" valign="middle">Icon</td>
-                                            <td align="right" valign="middle">
-                                                <div align="left" valign="middle">Logo</div>
-                                                <div align="left" valign="middle">Navigation</div>
+                                            <td width="41%" align="left" class="details" valign="middle">
+                                                <p class="details-title">Date & Time</p>
+                                                <p class="details-value">VIP</p>
+                                            </td>
+                                            <td width="10%" align="left" valign="middle" class="icon-container">
+                                                <img class="social-icon" src="assets/source-icon.png" alt="logo" />
+                                            </td>
+                                            <td width="41%" align="right" class="details" valign="middle">
+                                                <p align="left" class="details-title">Party Size</p>
+                                                <div align="left" class="details-value">Walk in</div>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+
+                                    <table role="presentation" border="0" cellpadding="" cellspacing="0">
+                                        <tr>
+                                            <td width="10%" align="left" valign="middle" class="icon-container">
+                                                <img class="social-icon" src="assets/clock-icon.png" alt="logo" />
+                                            </td>
+                                            <td width="41%" align="left" class="details" valign="middle">
+                                                <p class="details-title">Guest Type</p>
+                                                <p class="details-value">VIP</p>
+                                            </td>
+                                            <td width="10%" align="left" valign="middle" class="icon-container">
+                                                <img class="social-icon" src="assets/source-icon.png" alt="logo" />
+                                            </td>
+                                            <td width="41%" align="right" class="details" valign="middle">
+                                                <p align="left" class="details-title">Source</p>
+                                                <div align="left" class="details-value">Walk in</div>
                                             </td>
                                         </tr>
                                     </table>
@@ -194,12 +331,17 @@
                             </div>
 
                             <div class="guest-notes">
-                                <h3>Special Requirements</h3>
+                                <h3 class="guest-notes-title">Special Requirements</h3>
 
-                                <table role="presentation" style="margin-bottom: 8px;" width="100%" border="0">
-                                    <tr style="background-color: red;">
+                                <table role="presentation" style="margin-bottom: 18px;" width="100%" border="0">
+                                    <tr>
                                         <td class="card card-special-notes">
-                                            <div class="card-header">Special Notes</div>
+                                            <div class="card-header">
+                                                <div class="exclaimation-icon-container">
+                                                    <img width="50%" src="assets/exclaimation-icon.png" alt="exclaimation-icon" />
+                                                </div>
+                                                Special Notes
+                                            </div>
                                             Need More Champagne, for celebration
                                         </td>
                                     </tr>
@@ -207,24 +349,44 @@
 
                                 <table role="presentation" width="100%" border="0">
                                     <tr>
-                                        <td class="card card-dietary" width="50%">
+                                        <td class="card card-dietary">
                                             <div class="card-header">Dietary Preferences</div>
                                             Vegan, Gluten Free
                                         </td>
-                                        <td width="8px">&nbsp;</td>
-                                        <td class="card card-allergies" width="50%">
+                                        <td width="18px">&nbsp;</td>
+                                        <td class="card card-allergies">
                                             <div class="card-header">Allergies</div>
                                             Nuts, Spicy, Tomatoes
                                         </td>
                                     </tr>
                                 </table>
+
+                            </div>
+
+                            <div class="action-section">
+                                <button>
+                                    <span style="display:inline-block; vertical-align:middle; margin-right:8px;">
+                                        <img src="assets/view-icon.png" alt="logo" style="display:block;">
+                                    </span>
+                                    <span style="display:inline-block; vertical-align:middle;">
+                                        View Full Reservation
+                                    </span>
+                                </button>
                             </div>
                         </td>
                     </tr>
 
                     <tr>
                         <td class="footer">
-                            fefe
+                            <div class="logo">
+                                <img src="assets/e-menu-tables-logo.png" alt="logo" />
+                            </div>
+                            <p>This is an automated notification from your reservation system.</p>
+                            <p style="color: #9CA3AF;">© 2025 eMenu Table. All Rights Reserved.</p>
+                            <img class="social-icon" src="assets/linkedIn.png" alt="logo" />
+                            <img class="social-icon" src="assets/instagram.png" alt="logo" />
+                            <img class="social-icon" src="assets/facebook.png" alt="logo" />
+                            <img class="social-icon" src="assets/youtube.png" alt="logo" />
                         </td>
                     </tr>
 
