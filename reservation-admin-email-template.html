@@ -161,16 +161,6 @@
             margin: 8px 0;
         }
 
-        .footer {
-            background-color: #2F4D4E;
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            color: #ffffff;
-        }
-
-
-
         .section-title {
             font-size: 18px;
             font-weight: bold;
@@ -265,6 +255,9 @@
         .footer {
             background-color: #000000;
             padding: 48px 0;
+            text-align: center;
+            font-size: 14px;
+            color: #ffffff;
         }
     </style>
 </head>
@@ -277,25 +270,31 @@
                     <tr>
                         <td class="header">
                             {% if status == 'pending' %}
-                                <img src="assets/new-reservations.png" width="72" height="72" style="display:block;" alt="New Reservation Icon" />
-                                <h2 class="header-heading">New Reservation Received!</h2>
-                                <p>A new booking has been made. Please review the details below.</p>
+                            <img src="assets/new-reservations.png" width="72" height="72" style="display:block;"
+                                alt="New Reservation Icon" />
+                            <h2 class="header-heading">New Reservation Received!</h2>
+                            <p>A new booking has been made. Please review the details below.</p>
                             {% elif status == 'confirmed' %}
-                                <img src="assets/reservation-confirmed.png" width="72" height="72" style="display:block;" alt="Booking Confirmed Icon" />
-                                <h2 class="header-heading">Booking Confirmed</h2>
-                                <p>The Guest {{ guest_name }} has successfully confirmed the reservation.</p>
+                            <img src="assets/reservation-confirmed.png" width="72" height="72" style="display:block;"
+                                alt="Booking Confirmed Icon" />
+                            <h2 class="header-heading">Booking Confirmed</h2>
+                            <p>The Guest {{ guest_name }} has successfully confirmed the reservation.</p>
                             {% elif status == 'cancelled' %}
-                                <img src="assets/reservation-cancelled.png" width="72" height="72" style="display:block;" alt="Reservation Cancelled Icon" />
-                                <h2 class="header-heading">Reservation Cancelled</h2>
-                                <p>You have successfully cancelled the reservation for {{ guest_name }}.</p>
+                            <img src="assets/reservation-cancelled.png" width="72" height="72" style="display:block;"
+                                alt="Reservation Cancelled Icon" />
+                            <h2 class="header-heading">Reservation Cancelled</h2>
+                            <p>You have successfully cancelled the reservation for {{ guest_name }}.</p>
                             {% elif status == 'no_show' %}
-                                <img src="assets/reservation-no-show.png" width="72" height="72" style="display:block;" alt="Guest No Show Icon" />
-                                <h2 class="header-heading">Guest No Show!</h2>
-                                <p>Unfortunately, the guest {{ guest_name }} did not arrive for the scheduled booking with the following info.</p>
+                            <img src="assets/reservation-no-show.png" width="72" height="72" style="display:block;"
+                                alt="Guest No Show Icon" />
+                            <h2 class="header-heading">Guest No Show!</h2>
+                            <p>Unfortunately, the guest {{ guest_name }} did not arrive for the scheduled booking with
+                                the following info.</p>
                             {% else %}
-                                <img src="assets/new-reservations.png" width="72" height="72" style="display:block;" alt="Reservation Icon" />
-                                <h2 class="header-heading">New Reservation Received!</h2>
-                                <p>A reservation has been received. Please check your dashboard for details.</p>
+                            <img src="assets/new-reservations.png" width="72" height="72" style="display:block;"
+                                alt="Reservation Icon" />
+                            <h2 class="header-heading">New Reservation Received!</h2>
+                            <p>A reservation has been received. Please check your dashboard for details.</p>
                             {% endif %}
                         </td>
 
@@ -307,7 +306,8 @@
                                 <div class="information-card">
                                     <div class="title">Guest Information</div>
                                     <!-- .status-confirmed .status-cancelled .status-no-show  .status-pending -->
-                                    <div class="status{% if status == 'pending' %} status-pending{% elif status == 'confirmed' %} status-confirmed{% elif status == 'cancelled' %} status-cancelled{% elif status == 'no_show' %} status-no-show{% endif %}">
+                                    <div
+                                        class="status{% if status == 'pending' %} status-pending{% elif status == 'confirmed' %} status-confirmed{% elif status == 'cancelled' %} status-cancelled{% elif status == 'no_show' %} status-no-show{% endif %}">
                                         &bull; {{ status }}
                                     </div>
                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
@@ -336,7 +336,8 @@
 
                                 <div class="information-card">
                                     <div class="title">Booking Details</div>
-                                    <table role="presentation" border="0" cellpadding="0" llspacing="0" style="margin-bottom: 12px;">
+                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0"
+                                        style="margin-bottom: 12px;">
                                         <tr>
                                             <td align="center" valign="middle">
                                                 <div class="icon-container">
@@ -346,7 +347,8 @@
                                             <td width="41%" align="left" class="details" valign="middle">
                                                 <p class="details-title">Date & Time</p>
                                                 <p class="details-value">{{ reservation_date }}</p>
-                                                <p class="details-value">{{ reservation_start_time }} - {{ reservation_end_time }}</p>
+                                                <p class="details-value">{{ reservation_start_time }} - {{
+                                                    reservation_end_time }}</p>
 
                                             </td>
                                             <td align="center" valign="middle">
@@ -396,14 +398,15 @@
                                         <td class="card card-special-notes">
                                             <div class="card-header">
                                                 <div class="exclaimation-icon-container">
-                                                    <img width="50%" src="assets/exclaimation-icon.png" alt="exclaimation-icon" />
+                                                    <img width="50%" src="assets/exclaimation-icon.png"
+                                                        alt="exclaimation-icon" />
                                                 </div>
                                                 Special Notes
                                             </div>
                                             {% if notes %}
-                                                {{ notes }}
+                                            {{ notes }}
                                             {% else %}
-                                                N/A
+                                            N/A
                                             {% endif %}
                                         </td>
                                     </tr>
@@ -414,9 +417,9 @@
                                         <td class="card card-dietary">
                                             <div class="card-header">Dietary Preferences</div>
                                             {% if dietary_preferences %}
-                                                {{ dietary_preferences }}
+                                            {{ dietary_preferences }}
                                             {% else %}
-                                                N/A
+                                            N/A
                                             {% endif %}
 
                                         </td>
@@ -424,9 +427,9 @@
                                         <td class="card card-allergies">
                                             <div class="card-header">Allergies</div>
                                             {% if allergies %}
-                                                {{ allergies }}
+                                            {{ allergies }}
                                             {% else %}
-                                                N/A
+                                            N/A
                                             {% endif %}
 
                                         </td>
