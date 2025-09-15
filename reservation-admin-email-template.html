@@ -19,12 +19,8 @@
             border-radius: 16px;
             overflow: hidden;
             margin-bottom: 20px;
-            box-shadow: 0px 12px 27px 0px #BCBCD21A,
-                0px 49px 49px 0px #BCBCD217,
-                0px 110px 66px 0px #BCBCD20D,
-                0px 195px 78px 0px #BCBCD203,
-                0px 304px 85px 0px #BCBCD200;
-
+            box-shadow: 5px 10px 13px 9px #b9b9d521;
+            margin: 0 12px;
         }
 
         .header {
@@ -46,7 +42,7 @@
 
         .header p {
             font-size: 16px;
-            color: #dddddd;
+            color: #ffffff;
             margin: 8px 0;
         }
 
@@ -175,12 +171,7 @@
             margin-bottom: 10px;
             font-size: 14px;
             color: #4B5563;
-            box-shadow: 0px 6px 13px 0px #B9B9D51A,
-                0px 23px 23px 0px #B9B9D517,
-                0px 51px 31px 0px #B9B9D50D,
-                0px 91px 37px 0px #B9B9D503,
-                0px 143px 40px 0px #B9B9D500;
-
+            box-shadow: 5px 10px 13px 9px #b9b9d521;
         }
 
         .card-header {
@@ -265,36 +256,36 @@
 <body>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
-            <td align="center" style="padding-top:100px;">
+            <td align="center" style="padding-top:50px; padding-bottom:50px;">
                 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="container">
                     <tr>
                         <td class="header">
-                            {% if status == 'pending' %}
-                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a6322a71281f435598bb995eb1e7a571.png" width="72" height="72" style="display:block;"
-                                alt="New Reservation Icon" />
+                            {% if status|lower == 'pending' %}
+                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a6322a71281f435598bb995eb1e7a571.png"
+                                width="72" height="72" style="display:block;" alt="New Reservation Icon" />
                             <h2 class="header-heading">New Reservation Received!</h2>
                             <p>A new booking has been made. Please review the details below.</p>
-                            {% elif status == 'confirmed' %}
-                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/c8b5f4e3d50e44d68b1df938edf2713f.png" width="72" height="72" style="display:block;"
-                                alt="Booking Confirmed Icon" />
+                            {% elif status|lower == 'confirmed' %}
+                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/c8b5f4e3d50e44d68b1df938edf2713f.png"
+                                width="72" height="72" style="display:block;" alt="Booking Confirmed Icon" />
                             <h2 class="header-heading">Booking Confirmed</h2>
-                            <p>The Guest {{ guest_name }} has successfully confirmed the reservation.</p>
-                            {% elif status == 'cancelled' %}
-                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/1729c4690611481591d21e80e422e603.png" width="72" height="72" style="display:block;"
-                                alt="Reservation Cancelled Icon" />
+                            <p>The Guest {{ guest_name }} has successfully <br> confirmed the reservation.</p>
+                            {% elif status|lower == 'cancelled' %}
+                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/1729c4690611481591d21e80e422e603.png"
+                                width="72" height="72" style="display:block;" alt="Reservation Cancelled Icon" />
                             <h2 class="header-heading">Reservation Cancelled</h2>
-                            <p>You have successfully cancelled the reservation for {{ guest_name }}.</p>
-                            {% elif status == 'no_show' %}
-                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/bb14515dad53480b811c40464f1feeae.png" width="72" height="72" style="display:block;"
-                                alt="Guest No Show Icon" />
+                            <p>You have successfully cancelled the <br>reservation for {{ guest_name }}.</p>
+                            {% elif status|lower == 'no_show' %}
+                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/bb14515dad53480b811c40464f1feeae.png"
+                                width="72" height="72" style="display:block;" alt="Guest No Show Icon" />
                             <h2 class="header-heading">Guest No Show!</h2>
-                            <p>Unfortunately, the guest {{ guest_name }} did not arrive for the scheduled booking with
+                            <p>Unfortunately, the guest {{ guest_name }} did not <br> arrive for the scheduled booking with
                                 the following info.</p>
                             {% else %}
-                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a6322a71281f435598bb995eb1e7a571.png" width="72" height="72" style="display:block;"
-                                alt="Reservation Icon" />
+                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a6322a71281f435598bb995eb1e7a571.png"
+                                width="72" height="72" style="display:block;" alt="Reservation Icon" />
                             <h2 class="header-heading">New Reservation Received!</h2>
-                            <p>A reservation has been received. Please check your dashboard for details.</p>
+                            <p>A reservation has been received. Please <br> check your dashboard for details.</p>
                             {% endif %}
                         </td>
 
@@ -307,14 +298,15 @@
                                     <div class="title">Guest Information</div>
                                     <!-- .status-confirmed .status-cancelled .status-no-show  .status-pending -->
                                     <div
-                                        class="status{% if status == 'pending' %} status-pending{% elif status == 'confirmed' %} status-confirmed{% elif status == 'cancelled' %} status-cancelled{% elif status == 'no_show' %} status-no-show{% endif %}">
+                                        class="status{% if status|lower == 'pending' %} status-pending{% elif status|lower == 'confirmed' %} status-confirmed{% elif status|lower == 'cancelled' %} status-cancelled{% elif status|lower == 'no_show' %} status-no-show{% endif %}">
                                         &bull; {{ status }}
                                     </div>
                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                         <tr>
                                             <td align="center" valign="middle">
                                                 <div class="icon-container">
-                                                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a32d3efb529b471d95c9b54e341ca608.png" alt="icon" />
+                                                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a32d3efb529b471d95c9b54e341ca608.png"
+                                                        alt="icon" />
                                                 </div>
                                             </td>
                                             <td width="41%" class="details" valign="middle">
@@ -323,7 +315,8 @@
                                             </td>
                                             <td align="center" valign="middle">
                                                 <div class="icon-container">
-                                                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a29183a6fb4f49089a502d230c991b22.png" alt="icon" />
+                                                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a29183a6fb4f49089a502d230c991b22.png"
+                                                        alt="icon" />
                                                 </div>
                                             </td>
                                             <td width="41%" class="details" valign="middle">
@@ -341,7 +334,8 @@
                                         <tr>
                                             <td align="center" valign="middle">
                                                 <div class="icon-container">
-                                                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/c2f552e136934381b132e47b66c95276.png" alt="icon" />
+                                                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/c2f552e136934381b132e47b66c95276.png"
+                                                        alt="icon" />
                                                 </div>
                                             </td>
                                             <td width="41%" align="left" class="details" valign="middle">
@@ -353,7 +347,8 @@
                                             </td>
                                             <td align="center" valign="middle">
                                                 <div class="icon-container">
-                                                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/06e5b8674c2147c59d5dc8fe4989aca0.png" alt="icon" />
+                                                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/06e5b8674c2147c59d5dc8fe4989aca0.png"
+                                                        alt="icon" />
                                                 </div>
                                             </td>
                                             <td width="41%" align="right" class="details" valign="middle">
@@ -369,7 +364,8 @@
                                         <tr>
                                             <td align="center" valign="middle">
                                                 <div class="icon-container">
-                                                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/eedcc01d143647f2aab51b7cc230a98f.png" alt="icon" />
+                                                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/eedcc01d143647f2aab51b7cc230a98f.png"
+                                                        alt="icon" />
                                                 </div>
                                             </td>
                                             <td width="41%" align="left" class="details" valign="middle">
@@ -378,7 +374,8 @@
                                             </td>
                                             <td align="center" valign="middle">
                                                 <div class="icon-container">
-                                                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/f226e339be354cd19a95b46ec24d3744.png" alt="icon" />
+                                                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/f226e339be354cd19a95b46ec24d3744.png"
+                                                        alt="icon" />
                                                 </div>
                                             </td>
                                             <td width="41%" align="right" class="details" valign="middle">
@@ -398,7 +395,9 @@
                                         <td class="card card-special-notes">
                                             <div class="card-header">
                                                 <div class="exclaimation-icon-container">
-                                                    <img width="50%" src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a8598d91fefd45afbf380d96900ee6f1.png" alt="exclaimation-icon" />
+                                                    <img width="50%"
+                                                        src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a8598d91fefd45afbf380d96900ee6f1.png"
+                                                        alt="exclaimation-icon" />
                                                 </div>
                                                 Special Notes
                                             </div>
@@ -440,7 +439,8 @@
                             <div class="action-section">
                                 <a href="{{ link }}">
                                     <span style="display:inline-block; vertical-align:middle; margin-right:8px;">
-                                        <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/bc54b80d0ff4438981f0dc027ac1643c.png" alt="logo" style="display:block" />
+                                        <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/bc54b80d0ff4438981f0dc027ac1643c.png"
+                                            alt="logo" style="display:block" />
                                     </span>
                                     <span style="display:inline-block; vertical-align:middle">
                                         View Full Reservation
@@ -453,14 +453,23 @@
                     <tr>
                         <td class="footer">
                             <div class="logo">
-                                <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/65f59e843ffc4a4983869bc705d2baaf.png" alt="logo" />
+                                <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/65f59e843ffc4a4983869bc705d2baaf.png"
+                                    alt="logo" />
                             </div>
                             <p>This is an automated notification from your reservation system.</p>
                             <p style="color: #9CA3AF;">© 2025 eMenu Table. All Rights Reserved.</p>
-                            <img class="social-icon" src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/fa31255d32d544b3a6f61206644e9f5e.png" alt="logo" />
-                            <img class="social-icon" src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/0f71777f5e734616b29256b508d9d9ca.png" alt="logo" />
-                            <img class="social-icon" src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/ee3db987d7c44de88ee6929b5c0d335a.png" alt="logo" />
-                            <img class="social-icon" src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/2af6dbf28b37401ba81a23e021c4ac86.png" alt="logo" />
+                            <img class="social-icon"
+                                src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/fa31255d32d544b3a6f61206644e9f5e.png"
+                                alt="logo" />
+                            <img class="social-icon"
+                                src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/0f71777f5e734616b29256b508d9d9ca.png"
+                                alt="logo" />
+                            <img class="social-icon"
+                                src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/ee3db987d7c44de88ee6929b5c0d335a.png"
+                                alt="logo" />
+                            <img class="social-icon"
+                                src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/2af6dbf28b37401ba81a23e021c4ac86.png"
+                                alt="logo" />
                         </td>
                     </tr>
                 </table>
