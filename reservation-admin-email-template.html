@@ -5,402 +5,226 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eMenu Reservations</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: white;
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            width: 608px;
-            background-color: white;
-            border-radius: 16px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            box-shadow: 5px 10px 13px 9px #b9b9d521;
-            margin: 0 12px;
-        }
-
-        .header {
-            background: linear-gradient(157.74deg, rgba(234, 193, 198, 0.69) 3.65%, rgba(87, 68, 230, 0.69) 90.44%);
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .header img {
-            margin: 0 auto;
-            display: block;
-        }
-
-        .header-heading {
-            font-size: 28px;
-            color: #ffffff;
-            margin: 16px 0 8px 0;
-        }
-
-        .header p {
-            font-size: 16px;
-            color: #ffffff;
-            margin: 8px 0;
-        }
-
-        .body {
-            padding: 20px;
-            color: #ffffff;
-        }
-
-        .body-info-content {
-            background-color: #FCF9FF;
-            color: black;
-            padding: 20px 30px;
-            margin: 20px 0 40px 0;
-        }
-
-        .body-info-content table {
-            width: 100%;
-            padding: 10px 0px;
-        }
-
-        .body-info-content .information-card .title {
-            color: #1F2937;
-            font-weight: 600;
-            font-size: 20px;
-        }
-
-        .body-info-content .information-card .status {
-            font-weight: 700;
-            font-size: 12px;
-            border-radius: 25px;
-            padding: 2px 8px;
-            margin-left: 8px;
-        }
-
-        .status-pending {
-            background-color: #FEF3C7;
-            color: #9A3412;
-        }
-
-        .status-no-show {
-            background-color: white;
-            color: #618290;
-            border: 1px solid #618290;
-        }
-
-        .status-cancelled {
-            background-color: #FFEDED;
-            color: #F41717;
-        }
-
-        .status-confirmed {
-            background-color: #D1FAE5;
-            color: #166534;
-        }
-
-        .body-info-content .information-card {
-            padding: 10px 0px;
-        }
-
-        .body-info-content .information-card .status,
-        .body-info-content .information-card .title {
-            display: inline-block;
-        }
-
-        .body-info-content .information-card .icon-container {
-            background-color: white;
-            aspect-ratio: 1/1;
-            width: 38px;
-            height: 38px;
-            border: 1px solid #E5E7EB;
-            margin-right: 8px;
-            border-radius: 7.5px;
-            line-height: 38px;
-        }
-
-        .body-info-content .information-card .icon-container img {
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        .body-info-content .information-card .details {
-            padding-left: 16px;
-        }
-
-        .body-info-content .information-card .details p {
-            margin: 0;
-            font-size: 13px;
-            color: #1F2937;
-            padding-bottom: 2px;
-        }
-
-        .body-info-content .information-card .details .details-value {
-            font-size: 14px;
-            font-weight: 700;
-            color: #4B5563;
-        }
-
-        .guest-notes .guest-notes-title {
-            font-weight: 700;
-            font-size: 21px;
-            padding: 14px 0;
-            color: #000000;
-        }
-
-        .body h3 {
-            font-size: 20px;
-            margin: 8px 0;
-        }
-
-        .body p {
-            font-size: 18px;
-            margin: 8px 0;
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .card {
-            background-color: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 15px;
-            padding: 24px;
-            margin-bottom: 10px;
-            font-size: 14px;
-            color: #4B5563;
-            box-shadow: 5px 10px 13px 9px #b9b9d521;
-        }
-
-        .card-header {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .card-header .exclaimation-icon-container {
-            width: 30px;
-            height: 30px;
-            background-color: #FEF9C3;
-            border-radius: 7.25px;
-            border: none;
-            display: inline-block;
-            text-align: center;
-            line-height: 25px;
-            margin-right: 6px;
-        }
-
-        .card-header .exclaimation-icon-container img {
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-
-        .card-special-notes .card-header {
-            color: #A16207;
-        }
-
-        .card-dietary .card-header {
-            color: #16A34A;
-        }
-
-        .card-allergies .card-header {
-            color: #DC2626;
-        }
-
-        .two-columns {
-            width: 100%;
-            table-layout: fixed;
-        }
-
-        .two-columns td {
-            vertical-align: top;
-            padding: 5px;
-        }
-
-        .action-section {
-            width: 100%;
-            padding: 30px 0px;
-        }
-
-        .action-section a {
-            display: block;
-            margin: 12px auto;
-            padding: 12px 24px;
-            border-radius: 16px;
-            border: none;
-            width: fit-content;
-            cursor: pointer;
-            background-image: linear-gradient(to right, #531CDF, #6161FF);
-            color: white;
-            font-weight: 700;
-            font-size: 16px;
-        }
-
-        .footer .social-icon {
-            margin-right: 8px;
-            margin-top: 18px;
-        }
-
-        .footer {
-            background-color: #000000;
-            padding: 48px 0;
-            text-align: center;
-            font-size: 14px;
-            color: #ffffff;
-        }
-    </style>
 </head>
 
-<body>
+<body style="margin:0; padding:0; background-color:#E1E1FC99; font-family:Arial,sans-serif;">
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <td align="center" style="padding-top:50px; padding-bottom:50px;">
-                <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="container">
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0"
+                    style="width:608px; background-color:white; border-radius:16px; overflow:hidden; margin:0 12px; margin-bottom:20px; box-shadow:5px 10px 13px 9px #b9b9d521;">
                     <tr>
-                        <td class="header">
+                        <td
+                            style="background:linear-gradient(157.74deg, rgba(234,193,198,0.69) 3.65%, rgba(87,68,230,0.69) 90.44%); padding:40px 0; text-align:center;">
                             {% if status|lower == 'pending' %}
                             <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a6322a71281f435598bb995eb1e7a571.png"
-                                width="72" height="72" style="display:block;" alt="New Reservation Icon" />
-                            <h2 class="header-heading">New Reservation Received!</h2>
-                            <p>A new booking has been made. Please review the details below.</p>
+                                width="72" height="72" style="display:block; margin:0 auto;"
+                                alt="New Reservation Icon" />
+                            <h2 style="font-size:28px; color:#ffffff; margin:16px 0 8px 0;">New Reservation Received!
+                            </h2>
+                            <p style="font-size:16px; color:#ffffff; margin:8px 0;">A new booking has been made. Please
+                                review the details below.</p>
                             {% elif status|lower == 'confirmed' %}
                             <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/c8b5f4e3d50e44d68b1df938edf2713f.png"
-                                width="72" height="72" style="display:block;" alt="Booking Confirmed Icon" />
-                            <h2 class="header-heading">Booking Confirmed</h2>
-                            <p>The Guest {{ guest_name }} has successfully <br> confirmed the reservation.</p>
+                                width="72" height="72" style="display:block; margin:0 auto;"
+                                alt="Booking Confirmed Icon" />
+                            <h2 style="font-size:28px; color:#ffffff; margin:16px 0 8px 0;">Booking Confirmed</h2>
+                            <p style="font-size:16px; color:#ffffff; margin:8px 0;">The Guest {{ guest_name }} has
+                                successfully <br> confirmed the reservation.</p>
                             {% elif status|lower == 'cancelled' %}
                             <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/1729c4690611481591d21e80e422e603.png"
-                                width="72" height="72" style="display:block;" alt="Reservation Cancelled Icon" />
-                            <h2 class="header-heading">Reservation Cancelled</h2>
-                            <p>You have successfully cancelled the <br>reservation for {{ guest_name }}.</p>
+                                width="72" height="72" style="display:block; margin:0 auto;"
+                                alt="Reservation Cancelled Icon" />
+                            <h2 style="font-size:28px; color:#ffffff; margin:16px 0 8px 0;">Reservation Cancelled</h2>
+                            <p style="font-size:16px; color:#ffffff; margin:8px 0;">You have successfully cancelled the
+                                <br>reservation for {{ guest_name }}.
+                            </p>
                             {% elif status|lower == 'no_show' %}
                             <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/bb14515dad53480b811c40464f1feeae.png"
-                                width="72" height="72" style="display:block;" alt="Guest No Show Icon" />
-                            <h2 class="header-heading">Guest No Show!</h2>
-                            <p>Unfortunately, the guest {{ guest_name }} did not <br> arrive for the scheduled booking with
-                                the following info.</p>
+                                width="72" height="72" style="display:block; margin:0 auto;" alt="Guest No Show Icon" />
+                            <h2 style="font-size:28px; color:#ffffff; margin:16px 0 8px 0;">Guest No Show!</h2>
+                            <p style="font-size:16px; color:#ffffff; margin:8px 0;">Unfortunately, the guest {{
+                                guest_name }} did not <br> arrive for the scheduled booking
+                                with the following info.</p>
                             {% else %}
                             <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a6322a71281f435598bb995eb1e7a571.png"
-                                width="72" height="72" style="display:block;" alt="Reservation Icon" />
-                            <h2 class="header-heading">New Reservation Received!</h2>
-                            <p>A reservation has been received. Please <br> check your dashboard for details.</p>
+                                width="72" height="72" style="display:block; margin:0 auto;" alt="Reservation Icon" />
+                            <h2 style="font-size:28px; color:#ffffff; margin:16px 0 8px 0;">New Reservation Received!
+                            </h2>
+                            <p style="font-size:16px; color:#ffffff; margin:8px 0;">A reservation has been received.
+                                Please <br> check your dashboard for details.</p>
                             {% endif %}
                         </td>
-
                     </tr>
 
                     <tr>
-                        <td class="body">
-                            <div class="body-info-content">
-                                <div class="information-card">
-                                    <div class="title">Guest Information</div>
-                                    <!-- .status-confirmed .status-cancelled .status-no-show  .status-pending -->
+                        <td style="padding:20px; color:#000000;">
+                            <!-- body-info-content -->
+                            <div
+                                style="background-color:#FCF9FF; color:black; padding:20px 30px; margin:20px 0 40px 0;">
+                                <!-- Guest Information -->
+                                <div style="padding:10px 0;">
+                                    <div style="color:#1F2937; font-weight:600; font-size:20px; display:inline-block;">
+                                        Guest Information</div>
+                                    {% if status|lower == 'pending' %}
                                     <div
-                                        class="status{% if status|lower == 'pending' %} status-pending{% elif status|lower == 'confirmed' %} status-confirmed{% elif status|lower == 'cancelled' %} status-cancelled{% elif status|lower == 'no_show' %} status-no-show{% endif %}">
+                                        style="display:inline-block; font-weight:700; font-size:12px; border-radius:25px; padding:2px 8px; margin-left:8px; background-color:#FEF3C7; color:#9A3412;">
                                         &bull; {{ status }}
                                     </div>
-                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                                        <tr>
-                                            <td align="center" valign="middle">
-                                                <div class="icon-container">
-                                                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a32d3efb529b471d95c9b54e341ca608.png"
-                                                        alt="icon" />
-                                                </div>
-                                            </td>
-                                            <td width="41%" class="details" valign="middle">
-                                                <p>Customer</p>
-                                                <p class="details-value">{{ guest_name }}</p>
-                                            </td>
-                                            <td align="center" valign="middle">
-                                                <div class="icon-container">
-                                                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a29183a6fb4f49089a502d230c991b22.png"
-                                                        alt="icon" />
-                                                </div>
-                                            </td>
-                                            <td width="41%" class="details" valign="middle">
-                                                <p>Contact</p>
-                                                <p class="details-value">{{ guest_phone }}</p>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                    {% elif status|lower == 'confirmed' %}
+                                    <div
+                                        style="display:inline-block; font-weight:700; font-size:12px; border-radius:25px; padding:2px 8px; margin-left:8px; background-color:#D1FAE5; color:#166534;">
+                                        &bull; {{ status }}
+                                    </div>
+                                    {% elif status|lower == 'cancelled' %}
+                                    <div
+                                        style="display:inline-block; font-weight:700; font-size:12px; border-radius:25px; padding:2px 8px; margin-left:8px; background-color:#FFEDED; color:#F41717;">
+                                        &bull; {{ status }}
+                                    </div>
+                                    {% elif status|lower == 'no_show' %}
+                                    <div
+                                        style="display:inline-block; font-weight:700; font-size:12px; border-radius:25px; padding:2px 8px; margin-left:8px; background-color:white; color:#618290; border:1px solid #618290;">
+                                        &bull; {{ status }}
+                                    </div>
+                                    {% endif %}
                                 </div>
+                                <table role="presentation" border="0" cellpadding="0" cellspacing="0"
+                                    style="width:100%; padding:10px 0;">
+                                    <tr>
+                                        <td align="center" valign="middle">
+                                            <div
+                                                style="background-color:white; aspect-ratio:1/1; width:38px; height:38px; border:1px solid #E5E7EB; margin-right:8px; border-radius:7.5px; line-height:38px; text-align:center;">
+                                                <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a32d3efb529b471d95c9b54e341ca608.png"
+                                                    alt="icon" style="vertical-align:middle;" />
+                                            </div>
+                                        </td>
+                                        <td width="41%" valign="middle" style="padding-left:16px;">
+                                            <p style="margin:0; font-size:13px; color:#1F2937; padding-bottom:2px;">
+                                                Customer</p>
+                                            <p style="margin:0; font-size:14px; font-weight:700; color:#4B5563;">{{
+                                                guest_name }}</p>
+                                        </td>
+                                        <td align="center" valign="middle">
+                                            <div
+                                                style="background-color:white; aspect-ratio:1/1; width:38px; height:38px; border:1px solid #E5E7EB; margin-right:8px; border-radius:7.5px; line-height:38px; text-align:center;">
+                                                <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a29183a6fb4f49089a502d230c991b22.png"
+                                                    alt="icon" style="vertical-align:middle;" />
+                                            </div>
+                                        </td>
+                                        <td width="41%" valign="middle" style="padding-left:16px;">
+                                            <p style="margin:0; font-size:13px; color:#1F2937; padding-bottom:2px;">
+                                                Contact</p>
+                                            <p style="margin:0; font-size:14px; font-weight:700; color:#4B5563;">{{
+                                                guest_phone }}</p>
+                                        </td>
+                                    </tr>
+                                </table>
 
-                                <div class="information-card">
-                                    <div class="title">Booking Details</div>
+                                <div style="padding:10px 0;">
+                                    <div
+                                        style="color:#1F2937;font-weight:600;font-size:20px;display:inline-block;padding:10px 0;">
+                                        Booking Details
+                                    </div>
+
+                                    <!-- Date & Time + Party Size -->
                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0"
-                                        style="margin-bottom: 12px;">
+                                        style="width:100%;margin-bottom:12px;">
                                         <tr>
                                             <td align="center" valign="middle">
-                                                <div class="icon-container">
+                                                <div
+                                                    style="background-color:white;aspect-ratio:1/1;width:38px;height:38px;border:1px solid #E5E7EB;margin-right:8px;border-radius:7.5px;line-height:38px;text-align:center;">
                                                     <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/c2f552e136934381b132e47b66c95276.png"
-                                                        alt="icon" />
+                                                        alt="icon"
+                                                        style="display:inline-block;vertical-align:middle;" />
                                                 </div>
                                             </td>
-                                            <td width="41%" align="left" class="details" valign="middle">
-                                                <p class="details-title">Date & Time</p>
-                                                <p class="details-value">{{ reservation_date }}</p>
-                                                <p class="details-value">{{ reservation_start_time }} - {{
-                                                    reservation_end_time }}</p>
-
+                                            <td width="41%" valign="middle" style="padding-left:16px;">
+                                                <p style="margin:0;font-size:13px;color:#1F2937;padding-bottom:2px;">
+                                                    Date &amp; Time</p>
+                                                <p style="font-size:14px;font-weight:700;color:#4B5563;margin:0;">{{
+                                                    reservation_date }}</p>
+                                                <p style="font-size:14px;font-weight:700;color:#4B5563;margin:0;">{{
+                                                    reservation_start_time }} - {{ reservation_end_time }}</p>
                                             </td>
                                             <td align="center" valign="middle">
-                                                <div class="icon-container">
+                                                <div
+                                                    style="background-color:white;aspect-ratio:1/1;width:38px;height:38px;border:1px solid #E5E7EB;margin-right:8px;border-radius:7.5px;line-height:38px;text-align:center;">
                                                     <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/06e5b8674c2147c59d5dc8fe4989aca0.png"
-                                                        alt="icon" />
+                                                        alt="icon"
+                                                        style="display:inline-block;vertical-align:middle;" />
                                                 </div>
                                             </td>
-                                            <td width="41%" align="right" class="details" valign="middle">
-                                                <p align="left" class="details-title">Party Size</p>
-                                                <div align="left" class="details-value">{{ number_of_guests }} guest(s)
-                                                </div>
+                                            <td width="41%" valign="middle" style="padding-left:16px;">
+                                                <p style="margin:0;font-size:13px;color:#1F2937;padding-bottom:2px;">
+                                                    Party Size</p>
+                                                <p style="font-size:14px;font-weight:700;color:#4B5563;margin:0;">{{
+                                                    number_of_guests }} guest(s)</p>
                                             </td>
                                         </tr>
-
                                     </table>
 
-                                    <table role="presentation" border="0" cellpadding="" cellspacing="0">
+                                    <!-- Guest Type + Status -->
+                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0"
+                                        style="width:100%;">
                                         <tr>
                                             <td align="center" valign="middle">
-                                                <div class="icon-container">
+                                                <div
+                                                    style="background-color:white;aspect-ratio:1/1;width:38px;height:38px;border:1px solid #E5E7EB;margin-right:8px;border-radius:7.5px;line-height:38px;text-align:center;">
                                                     <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/eedcc01d143647f2aab51b7cc230a98f.png"
-                                                        alt="icon" />
+                                                        alt="icon"
+                                                        style="display:inline-block;vertical-align:middle;" />
                                                 </div>
                                             </td>
-                                            <td width="41%" align="left" class="details" valign="middle">
-                                                <p class="details-title">Guest Type</p>
-                                                <p class="details-value">{{ guest_type }}</p>
+                                            <td width="41%" valign="middle" style="padding-left:16px;">
+                                                <p style="margin:0;font-size:13px;color:#1F2937;padding-bottom:2px;">
+                                                    Guest Type</p>
+                                                <p style="font-size:14px;font-weight:700;color:#4B5563;margin:0;">{{
+                                                    guest_type }}</p>
                                             </td>
                                             <td align="center" valign="middle">
-                                                <div class="icon-container">
+                                                <div
+                                                    style="background-color:white;aspect-ratio:1/1;width:38px;height:38px;border:1px solid #E5E7EB;margin-right:8px;border-radius:7.5px;line-height:38px;text-align:center;">
                                                     <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/f226e339be354cd19a95b46ec24d3744.png"
-                                                        alt="icon" />
+                                                        alt="icon"
+                                                        style="display:inline-block;vertical-align:middle;" />
                                                 </div>
                                             </td>
-                                            <td width="41%" align="right" class="details" valign="middle">
-                                                <p align="left" class="details-title">Source</p>
-                                                <div align="left" class="details-value">{{ source_type }}</div>
+                                            <td width="41%" valign="middle" style="padding-left:16px;">
+                                                <p style="margin:0;font-size:13px;color:#1F2937;padding-bottom:2px;">
+                                                    Source</p>
+                                                <p style="font-size:14px;font-weight:700;color:#4B5563;margin:0;">
+                                                    {{ source_type }} </p>
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
                             </div>
+                            </div>
 
-                            <div class="guest-notes">
-                                <h3 class="guest-notes-title">Special Requirements</h3>
 
-                                <table role="presentation" style="margin-bottom: 18px;" width="100%" border="0">
+                            <!-- Special Requirements (fully inlined) -->
+                            <div>
+                                <h3
+                                    style="font-weight:700; font-size:21px; padding:14px 0; color:#000000; margin:8px 0 0 0;">
+                                    Special Requirements
+                                </h3>
+
+                                <table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0"
+                                    style="margin-bottom:18px;">
                                     <tr>
-                                        <td class="card card-special-notes">
-                                            <div class="card-header">
-                                                <div class="exclaimation-icon-container">
+                                        <td
+                                            style="background-color:#fff; border:1px solid #e0e0e0; border-radius:15px; padding:24px; margin-bottom:10px; font-size:14px; color:#4B5563; box-shadow:5px 10px 13px 9px #b9b9d521; vertical-align:top;">
+                                            <div style="font-weight:bold; margin-bottom:5px; color:#A16207;">
+                                                <span
+                                                    style="display:inline-block; width:30px; height:30px; background-color:#FEF9C3; border-radius:7.25px; text-align:center; line-height:25px; margin-right:6px; vertical-align:middle;">
                                                     <img width="50%"
                                                         src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a8598d91fefd45afbf380d96900ee6f1.png"
-                                                        alt="exclaimation-icon" />
-                                                </div>
+                                                        alt="exclaimation-icon"
+                                                        style="display:inline-block; vertical-align:middle;" />
+                                                </span>
                                                 Special Notes
                                             </div>
+
                                             {% if notes %}
                                             {{ notes }}
                                             {% else %}
@@ -410,39 +234,47 @@
                                     </tr>
                                 </table>
 
-                                <table role="presentation" width="100%" border="0">
+                                <table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0"
+                                    style="margin-top:0;">
                                     <tr>
-                                        <td class="card card-dietary">
-                                            <div class="card-header">Dietary Preferences</div>
+                                        <td width="48%"
+                                            style="background-color:#fff; border:1px solid #e0e0e0; border-radius:15px; padding:24px; margin-bottom:10px; font-size:14px; color:#4B5563; box-shadow:5px 10px 13px 9px #b9b9d521; vertical-align:top;">
+                                            <div style="font-weight:bold; margin-bottom:5px; color:#16A34A;">Dietary
+                                                Preferences</div>
                                             {% if dietary_preferences %}
                                             {{ dietary_preferences }}
                                             {% else %}
                                             N/A
                                             {% endif %}
-
                                         </td>
-                                        <td width="18px">&nbsp;</td>
-                                        <td class="card card-allergies">
-                                            <div class="card-header">Allergies</div>
+
+                                        <!-- Spacer for 18px gap -->
+                                        <td width="18" style="font-size:0; line-height:0;">&nbsp;</td>
+
+                                        <td width="48%"
+                                            style="background-color:#fff; border:1px solid #e0e0e0; border-radius:15px; padding:24px; margin-bottom:10px; font-size:14px; color:#4B5563; box-shadow:5px 10px 13px 9px #b9b9d521; vertical-align:top;">
+                                            <div style="font-weight:bold; margin-bottom:5px; color:#DC2626;">Allergies
+                                            </div>
                                             {% if allergies %}
                                             {{ allergies }}
                                             {% else %}
                                             N/A
                                             {% endif %}
-
                                         </td>
                                     </tr>
-                                </table>
 
+                                </table>
                             </div>
 
-                            <div class="action-section">
-                                <a href="{{ link }}">
+                            <!-- CTA -->
+                            <div style="width:100%; padding:30px 0;">
+                                <a href="{{ link }}"
+                                    style="display:block; margin:12px auto; padding:12px 24px; border-radius:16px; border:none; width:fit-content; cursor:pointer; background-image:linear-gradient(to right, #531CDF, #6161FF); color:white; font-weight:700; font-size:16px; text-decoration:none;">
                                     <span style="display:inline-block; vertical-align:middle; margin-right:8px;">
                                         <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/bc54b80d0ff4438981f0dc027ac1643c.png"
-                                            alt="logo" style="display:block" />
+                                            alt="logo" style="display:block;" />
                                     </span>
-                                    <span style="display:inline-block; vertical-align:middle">
+                                    <span style="display:inline-block; vertical-align:middle;">
                                         View Full Reservation
                                     </span>
                                 </a>
@@ -450,26 +282,17 @@
                         </td>
                     </tr>
 
+                    <!-- Footer -->
                     <tr>
-                        <td class="footer">
-                            <div class="logo">
+                        <td
+                            style="background-color:#000000; padding:48px 0; text-align:center; font-size:14px; color:#ffffff;">
+                            <div>
                                 <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/65f59e843ffc4a4983869bc705d2baaf.png"
                                     alt="logo" />
                             </div>
                             <p>This is an automated notification from your reservation system.</p>
-                            <p style="color: #9CA3AF;">© 2025 eMenu Table. All Rights Reserved.</p>
-                            <img class="social-icon"
-                                src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/fa31255d32d544b3a6f61206644e9f5e.png"
-                                alt="logo" />
-                            <img class="social-icon"
-                                src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/0f71777f5e734616b29256b508d9d9ca.png"
-                                alt="logo" />
-                            <img class="social-icon"
-                                src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/ee3db987d7c44de88ee6929b5c0d335a.png"
-                                alt="logo" />
-                            <img class="social-icon"
-                                src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/2af6dbf28b37401ba81a23e021c4ac86.png"
-                                alt="logo" />
+                            <p style="color:#9CA3AF;">© 2025 eMenu Table. All Rights Reserved.</p>
+
                         </td>
                     </tr>
                 </table>
