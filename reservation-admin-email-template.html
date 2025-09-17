@@ -283,18 +283,7 @@
                     </tr>
 
                     <!-- Footer -->
-                    <tr>
-                        <td
-                            style="background-color:#000000; padding:48px 0; text-align:center; font-size:14px; color:#ffffff;">
-                            <div>
-                                <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/65f59e843ffc4a4983869bc705d2baaf.png"
-                                    alt="logo" />
-                            </div>
-                            <p>This is an automated notification from your reservation system.</p>
-                            <p style="color:#9CA3AF;">© 2025 eMenu Table. All Rights Reserved.</p>
-
-                        </td>
-                    </tr>
+                    {% include 'reservation-email-template-footer.html' %}
                 </table>
             </td>
         </tr>
