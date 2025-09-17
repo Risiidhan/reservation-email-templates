@@ -1,253 +1,175 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "reservation-base-email-template.html" %}
+{% block header %}
+{% if event_slug|lower == 'reservation_confirmation' %}
+<img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/c8b5f4e3d50e44d68b1df938edf2713f.png"
+    width="72" height="72" style="display:block; margin:0 auto;" alt="Booking Confirmed Icon" />
+<h2 style="font-size:28px; color:#f8f6f6; margin:16px 0 8px 0;">Reservation Confirmed</h2>
+<p style="font-size:16px; color:#f8f6f6; margin:8px 0;">Your table is waiting for you</p>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eMenu Reservations</title>
-</head>
+{% elif event_slug|lower == 'reservation_cancelled' %}
+<img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/1729c4690611481591d21e80e422e603.png"
+    width="72" height="72" style="display:block; margin:0 auto;" alt="Reservation Cancelled Icon" />
+<h2 style="font-size:28px; color:#f8f6f6; margin:16px 0 8px 0;">Reservation Cancelled</h2>
+<p style="font-size:16px; color:#f8f6f6; margin:8px 0;">Reservation missed? Please book
+    anytime.
+</p>
 
-<body style="margin:0; padding:0; background-color:#E1E1FC99; font-family:Arial,sans-serif;">
-    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-        <tr>
-            <td align="center" style="padding-top:50px; padding-bottom:50px;">
-                <table role="presentation" border="0" cellpadding="0" cellspacing="0"
-                    style="width:608px; background-color:#f8f6f6; border-radius:16px; overflow:hidden; margin:0 12px; margin-bottom:20px; box-shadow:5px 10px 13px 9px #b9b9d521;">
-                    <tr>
-                        <td
-                            style="background:linear-gradient(157.74deg, rgba(234,193,198,0.69) 3.65%, rgba(87,68,230,0.69) 90.44%); padding:40px 0; text-align:center;">
-
-                            {% if event_slug|lower == 'reservation_confirmation' %}
-                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/c8b5f4e3d50e44d68b1df938edf2713f.png"
-                                width="72" height="72" style="display:block; margin:0 auto;"
-                                alt="Booking Confirmed Icon" />
-                            <h2 style="font-size:28px; color:#f8f6f6; margin:16px 0 8px 0;">Reservation Confirmed</h2>
-                            <p style="font-size:16px; color:#f8f6f6; margin:8px 0;">Your table is waiting for you</p>
-
-                            {% elif event_slug|lower == 'reservation_cancelled' %}
-                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/1729c4690611481591d21e80e422e603.png"
-                                width="72" height="72" style="display:block; margin:0 auto;"
-                                alt="Reservation Cancelled Icon" />
-                            <h2 style="font-size:28px; color:#f8f6f6; margin:16px 0 8px 0;">Reservation Cancelled</h2>
-                            <p style="font-size:16px; color:#f8f6f6; margin:8px 0;">Reservation missed? Please book
-                                anytime.
-                            </p>
-
-                            {% elif event_slug|lower == 'reservation_no_show' %}
-                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/bb14515dad53480b811c40464f1feeae.png"
-                                width="72" height="72" style="display:block; margin:0 auto;"
-                                alt="Reservation Cancelled Icon" />
-                            <h2 style="font-size:28px; color:#f8f6f6; margin:16px 0 8px 0;">Guest No Show!</h2>
-                            <p style="font-size:16px;  color:#f8f6f6; margin:8px 0;">Your booking time passed and was
-                                recorded
-                                as a no-show.
-                            </p>
-
-                            {% else %}
-                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/c8b5f4e3d50e44d68b1df938edf2713f.png"
-                                width="72" height="72" style="display:block; margin:0 auto;"
-                                alt="Booking Confirmed Icon" />
-                            <h2 style="font-size:28px; color:#f8f6f6; margin:16px 0 8px 0;">Reservation Confirmed</h2>
-                            <p style="font-size:16px; color:#f8f6f6; margin:8px 0;">Your table is waiting for you</p>
-                            {% endif %}
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td style="padding:20px; color:#000001;">
-                            <!-- body-info-content -->
-                            <h3
-                                style="font-weight:700; font-size:21px; padding:14px 0; color:#000001; margin:4px 0 0 0;">
-                                Hi {{ guest_name }},
-                            </h3>
+{% elif event_slug|lower == 'reservation_no_show' %}
+<img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/bb14515dad53480b811c40464f1feeae.png"
+    width="72" height="72" style="display:block; margin:0 auto;" alt="Reservation Cancelled Icon" />
+<h2 style="font-size:28px; color:#f8f6f6; margin:16px 0 8px 0;">Guest No Show!</h2>
+<p style="font-size:16px;  color:#f8f6f6; margin:8px 0;">Your booking time passed and was
+    recorded
+    as a no-show.
+</p>
+{% endif %}
+{% endblock %}
 
 
-                            {% if event_slug|lower == 'reservation_confirmation' %}
-                            <p style="margin:0; font-size:14px; color:#1F2937; padding-bottom:2px;">Your reservation at
-                                <strong>{{ restaurant_name }}</strong> is <span
-                                    style="color: #16A34A; font-weight: 600;">Confirmed!</span>
-                            </p>
-
-                            {% elif event_slug|lower == 'reservation_cancelled' %}
-                            <p style="margin:0; font-size:14px; color:#1F2937; padding-bottom:2px;">We wanted to let you
-                                know that your reservation at <strong>{{ restaurant_name }}</strong> has been
-                                <span style="color: #DC2626; font-weight: 600;">Cancelled!</span>
-                            </p>
-
-                            {% elif event_slug|lower == 'reservation_no_show' %}
-                            <p style="margin:0; font-size:14px; color:#1F2937; padding-bottom:2px;">We wanted to inform
-                                you that your reservation at <strong>{{ restaurant_name }}</strong> scheduled for the
-                                time below has been
-                                marked as a <span style="color: #DC2626; font-weight: 600;">No-Show!</span> in our
-                                system.
-                            </p>
+{% block content %}
+<tr>
+    <td style="padding:20px; color:#000001;">
+        <!-- body-info-content -->
+        <h3 style="font-weight:700; font-size:21px; padding:14px 0; color:#000001; margin:4px 0 0 0;">
+            Hi {{ guest_name }},
+        </h3>
 
 
-                            <div
-                                style="background-color:#FCF9FF; color:#000001; padding:20px 30px; margin:20px 0 20px 0;">
+        {% if event_slug|lower == 'reservation_confirmation' %}
+        <p style="margin:0; font-size:14px; color:#1F2937; padding-bottom:2px;">Your reservation at
+            <strong>{{ restaurant_name }}</strong> is <span style="color: #16A34A; font-weight: 600;">Confirmed!</span>
+        </p>
 
-                                <div>
-                                    <div
-                                        style="color:#1F2937;font-weight:600;font-size:20px;display:inline-block;padding:10px 0;">
-                                        Reservation Details
-                                    </div>
+        {% elif event_slug|lower == 'reservation_cancelled' %}
+        <p style="margin:0; font-size:14px; color:#1F2937; padding-bottom:2px;">We wanted to let you
+            know that your reservation at <strong>{{ restaurant_name }}</strong> has been
+            <span style="color: #DC2626; font-weight: 600;">Cancelled!</span>
+        </p>
 
-                                    <!-- Date & Time + Party Size -->
-                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0"
-                                        style="width:100%;margin-bottom:12px;">
-                                        <tr>
-                                            <td align="center" valign="middle">
-                                                <div
-                                                    style="background-color:#f8f6f6;aspect-ratio:1/1;width:38px;height:38px;border:1px solid #E5E7EB;margin-right:8px;border-radius:7.5px;line-height:38px;text-align:center;">
-                                                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/c2f552e136934381b132e47b66c95276.png"
-                                                        alt="icon"
-                                                        style="display:inline-block;vertical-align:middle;" />
-                                                </div>
-                                            </td>
-                                            <td width="41%" valign="middle" style="padding-left:16px;">
-                                                <p style="margin:0;font-size:13px;color:#1F2937;padding-bottom:2px;">
-                                                    Date &amp; Time</p>
-                                                <p style="font-size:14px;font-weight:700;color:#4B5563;margin:0;">{{
-                                                    reservation_date }}</p>
-                                                <p style="font-size:14px;font-weight:700;color:#4B5563;margin:0;">{{
-                                                    reservation_start_time }} - {{ reservation_end_time }}</p>
-                                            </td>
-                                            <td align="center" valign="middle">
-                                                <div
-                                                    style="background-color:#f8f6f6;aspect-ratio:1/1;width:38px;height:38px;border:1px solid #E5E7EB;margin-right:8px;border-radius:7.5px;line-height:38px;text-align:center;">
-                                                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/06e5b8674c2147c59d5dc8fe4989aca0.png"
-                                                        alt="icon"
-                                                        style="display:inline-block;vertical-align:middle;" />
-                                                </div>
-                                            </td>
-                                            <td width="41%" valign="middle" style="padding-left:16px;">
-                                                <p style="margin:0;font-size:13px;color:#1F2937;padding-bottom:2px;">
-                                                    Party Size</p>
-                                                <p style="font-size:14px;font-weight:700;color:#4B5563;margin:0;">{{
-                                                    number_of_guests }} guest(s)</p>
-                                            </td>
-                                        </tr>
-                                    </table>
+        {% elif event_slug|lower == 'reservation_no_show' %}
+        <p style="margin:0; font-size:14px; color:#1F2937; padding-bottom:2px;">We wanted to inform
+            you that your reservation at <strong>{{ restaurant_name }}</strong> scheduled for the
+            time below has been
+            marked as a <span style="color: #DC2626; font-weight: 600;">No-Show!</span> in our
+            system.
+        </p>
+        {% endif %}
 
+        <div style="background-color:#FCF9FF; color:#000001; padding:20px 30px; margin:20px 0 20px 0;">
+            <div>
+                <div style="color:#1F2937;font-weight:600;font-size:20px;display:inline-block;padding:10px 0;">
+                    Reservation Details
+                </div>
+                <!-- Date & Time + Party Size -->
+                {% include 'reservation-date-size-table.html' %}
+            </div>
+        </div>
 
-                                </div>
-                            </div>
-                            </div>
+        {% if event_slug|lower == 'reservation_confirmation' %}
+        <!-- CTA -->
+        <div style="width:100%; padding-bottom:20px;">
+            <a href="{{ link }}"
+                style="display:block; margin:18px auto; padding:12px 24px; border-radius:8px; border:none; width:fit-content; cursor:pointer; background-image:linear-gradient(to right, #531CDF, #6161FF); color:#f8f6f6; font-weight:700; font-size:16px; text-decoration:none;">
+                <span style="display:inline-block; vertical-align:middle; margin-right:8px;">
+                    <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/b56a695e7fd2406aac922a1bd780bbd4.png"
+                        alt="logo" style="display:block;" />
+                </span>
+                <span style="display:inline-block; vertical-align:middle;">
+                    View Full Reservation
+                </span>
+            </a>
+        </div>
 
-                            {% if event_slug|lower == 'reservation_confirmation' %}
-                            <!-- CTA -->
-                            <div style="width:100%; padding-bottom:20px;">
-                                <a href="{{ link }}"
-                                    style="display:block; margin:18px auto; padding:12px 24px; border-radius:8px; border:none; width:fit-content; cursor:pointer; background-image:linear-gradient(to right, #531CDF, #6161FF); color:#f8f6f6; font-weight:700; font-size:16px; text-decoration:none;">
-                                    <span style="display:inline-block; vertical-align:middle; margin-right:8px;">
-                                        <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/b56a695e7fd2406aac922a1bd780bbd4.png"
-                                            alt="logo" style="display:block;" />
-                                    </span>
-                                    <span style="display:inline-block; vertical-align:middle;">
-                                        View Full Reservation
-                                    </span>
-                                </a>
-                            </div>
+        <div>
+            <table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0"
+                style="margin-bottom:18px;">
+                <tr>
+                    <td
+                        style="background-color:#EDE7FF; border:1px solid #8556FF; border-radius:15px; padding:24px; margin-bottom:10px; font-size:14px; color:#4B5563; box-shadow:5px 10px 13px 9px #b9b9d521; vertical-align:top;">
+                        <div style="font-weight:bold; margin-bottom:5px; color:#3A1C94;">
+                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/37dcf11e8c6940f2948c6186503212e6.png"
+                                alt="exclaimation-icon"
+                                style="display:inline-block; vertical-align:middle; margin-right:2px" />
+                            Important Information
+                        </div>
+                        <p style="color:#3A1C94;">
+                            Please arrive 15 minutes early for your reservation. If you need to make
+                            any changes, contact us at least 2 hours in advance.
+                        </p>
+                    </td>
+                </tr>
+            </table>
 
-                            <div>
-                                <table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0"
-                                    style="margin-bottom:18px;">
-                                    <tr>
-                                        <td
-                                            style="background-color:#EDE7FF; border:1px solid #8556FF; border-radius:15px; padding:24px; margin-bottom:10px; font-size:14px; color:#4B5563; box-shadow:5px 10px 13px 9px #b9b9d521; vertical-align:top;">
-                                            <div style="font-weight:bold; margin-bottom:5px; color:#3A1C94;">
-                                                <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/37dcf11e8c6940f2948c6186503212e6.png"
-                                                    alt="exclaimation-icon"
-                                                    style="display:inline-block; vertical-align:middle; margin-right:2px" />
-                                                Important Information
-                                            </div>
-                                            <p style="color:#3A1C94;">
-                                                Please arrive 15 minutes early for your reservation. If you need to make
-                                                any changes, contact us at least 2 hours in advance.
-                                            </p>
-                                        </td>
-                                    </tr>
-                                </table>
+            <table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0"
+                style="margin: 25px 0px;">
+                <tr>
+                    <td width="48%"
+                        style="background-color:#fff; border:1px solid #e0e0e0; border-radius:15px; padding:24px; margin-bottom:10px; font-size:14px; color:#4B5563; box-shadow:5px 10px 13px 9px #b9b9d521; vertical-align:top;">
 
-                                <table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0"
-                                    style="margin: 25px 0px;">
-                                    <tr>
-                                        <td width="48%"
-                                            style="background-color:#fff; border:1px solid #e0e0e0; border-radius:15px; padding:24px; margin-bottom:10px; font-size:14px; color:#4B5563; box-shadow:5px 10px 13px 9px #b9b9d521; vertical-align:top;">
+                        <div style="font-weight:bold; margin-bottom:5px; color:#16A34A;">
+                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a1baf1e0a7834157a3b57aa7a255f49e.png"
+                                alt="exclaimation-icon"
+                                style="display:inline-block; vertical-align:middle; margin-right:8px" />
+                            <span style="color: #000001;">
+                                Restaurant Location
+                            </span>
+                        </div>
+                        {{ reservation_address }}
+                    </td>
 
-                                            <div style="font-weight:bold; margin-bottom:5px; color:#16A34A;">
-                                                <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/a1baf1e0a7834157a3b57aa7a255f49e.png"
-                                                    alt="exclaimation-icon"
-                                                    style="display:inline-block; vertical-align:middle; margin-right:8px" />
-                                                <span style="color: #000001;">
-                                                    Restaurant Location
-                                                </span>
-                                            </div>
-                                            {{ reservation_address }}
-                                        </td>
+                    <!-- Spacer for 18px gap -->
+                    <td width="18" style="font-size:0; line-height:0;">&nbsp;</td>
 
-                                        <!-- Spacer for 18px gap -->
-                                        <td width="18" style="font-size:0; line-height:0;">&nbsp;</td>
+                    <td width="48%"
+                        style="background-color:#fff; border:1px solid #e0e0e0; border-radius:15px; padding:24px; margin-bottom:10px; font-size:14px; color:#4B5563; box-shadow:5px 10px 13px 9px #b9b9d521; vertical-align:top;">
+                        <div style="font-weight:bold; margin-bottom:5px; color:#DC2626;">
+                            <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/18cdb6607b2a4cc6b8bbae405c6b1d7a.png"
+                                alt="exclaimation-icon"
+                                style="display:inline-block; vertical-align:middle; margin-right:8px" />
+                            <span style="color: #000001;">
+                                Restaurant Contact
+                            </span>
+                        </div>
+                        Phone: {{ guest_phone }} <br>
+                        Email: <span style="text-decoration: none; font-weight: 600;">
+                            Your text here
+                        </span>
+                    </td>
+                </tr>
 
-                                        <td width="48%"
-                                            style="background-color:#fff; border:1px solid #e0e0e0; border-radius:15px; padding:24px; margin-bottom:10px; font-size:14px; color:#4B5563; box-shadow:5px 10px 13px 9px #b9b9d521; vertical-align:top;">
-                                            <div style="font-weight:bold; margin-bottom:5px; color:#DC2626;">
-                                                <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/18cdb6607b2a4cc6b8bbae405c6b1d7a.png"
-                                                    alt="exclaimation-icon"
-                                                    style="display:inline-block; vertical-align:middle; margin-right:8px" />
-                                                <span style="color: #000001;">
-                                                    Restaurant Contact
-                                                </span>
-                                            </div>
-                                            Phone: {{ guest_phone }} <br>
-                                            Email: {{ guest_email }}
+            </table>
+        </div>
 
-                                        </td>
-                                    </tr>
+        {% elif event_slug|lower == 'reservation_cancelled' %}
 
-                                </table>
-                            </div>
+        <p style="margin:0; font-size:14px; color:#1F2937; padding-bottom:2px;">
+            We hope to welcome you soon feel free to book again at your convenience!
+        </p>
 
-                            {% elif event_slug|lower == 'reservation_cancelled' %}
+        <p style="font-size: 20px; font-weight: 600; color: #1F2937; margin-bottom: 4px;">Thank you!
+        </p>
+        <p style="margin:0; font-size:14px; color:#1F2937; padding-bottom:2px;">
+            {{ restaurant_name }}
+        </p>
 
-                            <p style="margin:0; font-size:14px; color:#1F2937; padding-bottom:2px;">
-                                We hope to welcome you soon feel free to book again at your convenience!
-                            </p>
+        {% elif event_slug|lower == 'reservation_no_show' %}
 
-                            <p style="font-size: 20px; font-weight: 600; color: #1F2937; margin-bottom: 4px;">Thank you!
-                            </p>
-                            <p style="margin:0; font-size:14px; color:#1F2937; padding-bottom:2px;">
-                                {{ restaurant_name }}
-                            </p>
+        <p style="margin:0; font-size:14px; color:#1F2937; padding-bottom:2px;">
+            If you still wish to dine with us, you’re welcome to make a new reservation at your
+            convenience.
+        </p>
 
-                            {% elif event_slug|lower == 'reservation_no_show' %}
+        <p style="margin:0; font-size:14px; color:#1F2937; padding-bottom:2px;">
+            We look forward to welcoming you soon!
+        </p>
 
-                            <p style="margin:0; font-size:14px; color:#1F2937; padding-bottom:2px;">
-                                If you still wish to dine with us, you’re welcome to make a new reservation at your
-                                convenience.
-                            </p>
+        <p style="font-size: 20px; font-weight: 600; color: #1F2937; margin-bottom: 4px;">Thank you!
+        </p>
+        <p style="margin:0; font-size:14px; color:#1F2937; padding-bottom:2px;">
+            {{ restaurant_name }}
+        </p>
+        {% endif %}
 
-                            <p style="margin:0; font-size:14px; color:#1F2937; padding-bottom:2px;">
-                                We look forward to welcoming you soon!
-                            </p>       
-
-                            <p style="font-size: 20px; font-weight: 600; color: #1F2937; margin-bottom: 4px;">Thank you!
-                            </p>
-                            <p style="margin:0; font-size:14px; color:#1F2937; padding-bottom:2px;">
-                                {{ restaurant_name }}
-                            </p>
-                            {% endif %}
-
-                        </td>
-                    </tr>
-
-                    <!-- Footer -->
-                    {% include 'reservation-email-template-footer.html' %}
-                   
-                </table>
-            </td>
-        </tr>
-    </table>
-</body>
-
-</html>
+    </td>
+</tr>
+{% endblock %}

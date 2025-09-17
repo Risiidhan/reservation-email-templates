@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eMenu Reservation Mail</title>
+</head>
+
+<body style="margin:0; padding:0; background-color:#E1E1FC99; font-family:Arial,sans-serif;">
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center" style="padding-top:50px; padding-bottom:50px;">
+                <table id="content" role="presentation" border="0" cellpadding="0" cellspacing="0"
+                    style="width:608px; background-color:#f8f6f6; border-radius:16px; overflow:hidden; margin:0 12px; margin-bottom:20px; box-shadow:5px 10px 13px 9px #b9b9d521;">
+                    <tr>
+                        <td
+                            style="background:linear-gradient(157.74deg, rgba(234,193,198,0.69) 3.65%, rgba(87,68,230,0.69) 90.44%); padding:40px 0; text-align:center;">
+                            {% block header %}{% endblock %}
+                        </td>
+                    </tr>
+                    <tr>
+
+                        {% block content %}{% endblock %}
+                    </tr>
+                    <tr>
+                        <td
+                            style="background-color:#000001; padding:48px 0; text-align:center; font-size:14px; color:#f8f6f6;">
+                            <div>
+                                <img src="https://hotelz-media.b-cdn.net/e92e9b7f-1a18-4f65-91ca-e60d1074e981/images/65f59e843ffc4a4983869bc705d2baaf.png"
+                                    alt="logo" />
+                            </div>
+                            <p>This is an automated notification from your reservation system.</p>
+                            <p style="color:#9CA3AF;">© 2025 eMenu Table. All Rights Reserved.</p>
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
